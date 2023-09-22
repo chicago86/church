@@ -1,7 +1,7 @@
 import "@aws-amplify/ui-react/styles.css"
 import React from "react"
 import s from "./app.module.scss"
-// import BurgerMenu from '../../ui/burger-menu/burger-menu'
+import BurgerMenu from '../../components/ui2/burger-menu/burger-menu'
 
 interface Props {
   children: React.ReactNode
@@ -9,7 +9,7 @@ interface Props {
 
 const App: React.FC<Props> = props => {
   return <div className={s.page}>
-    {/* <BurgerMenu/> */}
+    <BurgerMenu/>
     <section className={s.content}>
       {props.children}
     </section>
