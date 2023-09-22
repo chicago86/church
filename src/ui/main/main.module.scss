@@ -36,3 +36,8 @@ body {
   background-color: #fdfdfd;
   margin: 5px;
 }
+@media (max-width: 768px) {
+  .rightColumn {
+    display: none;
+  }
+}
