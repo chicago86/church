@@ -1,0 +1,27 @@
+export const input_type = {
+    button: 1,
+    checkbox: 2,
+    color: 3,
+    date: 4,
+    'datetime-local': 5,
+    email: 6,
+    file: 7,
+    hidden: 8,
+    image: 9,
+    month: 10,
+    number: 11,
+    password: 12,
+    radio: 13,
+    range: 14,
+    reset: 15,
+    search: 16,
+    submit: 17,
+    tel: 18,
+    text: 19,
+    time: 20,
+    url: 21,
+    week: 22,
+    geometry: 23,
+    xml: 24
+} as const;
+

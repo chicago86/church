@@ -1,0 +1,1292 @@
+schema {
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
+}
+
+"""whether this query should be cached (Hasura Cloud only)"""
+directive @cached(
+  """measured in seconds"""
+  ttl: Int! = 60
+
+  """refresh the cache entry"""
+  refresh: Boolean! = false
+) on QUERY
+
+"""
+Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"""An object with globally unique ID"""
+interface Node {
+  """A globally unique identifier"""
+  id: ID!
+}
+
+type PageInfo {
+  endCursor: String!
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+}
+
+"""
+Boolean expression to compare columns of type "String". All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+
+  """does the column match the given case-insensitive pattern"""
+  _ilike: String
+  _in: [String!]
+
+  """
+  does the column match the given POSIX regular expression, case insensitive
+  """
+  _iregex: String
+  _is_null: Boolean
+
+  """does the column match the given pattern"""
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+
+  """does the column NOT match the given case-insensitive pattern"""
+  _nilike: String
+  _nin: [String!]
+
+  """
+  does the column NOT match the given POSIX regular expression, case insensitive
+  """
+  _niregex: String
+
+  """does the column NOT match the given pattern"""
+  _nlike: String
+
+  """
+  does the column NOT match the given POSIX regular expression, case sensitive
+  """
+  _nregex: String
+
+  """does the column NOT match the given SQL regular expression"""
+  _nsimilar: String
+
+  """
+  does the column match the given POSIX regular expression, case sensitive
+  """
+  _regex: String
+
+  """does the column match the given SQL regular expression"""
+  _similar: String
+}
+
+"""
+columns and relationships of "base.session"
+"""
+type base_session implements Node {
+  id: ID!
+  x_hasura_session(
+    """JSON select path"""
+    path: String
+  ): json
+  x_hasura_session_guid: uuid!
+}
+
+"""
+A Relay connection object on "base.session"
+"""
+type base_sessionConnection {
+  edges: [base_sessionEdge!]!
+  pageInfo: PageInfo!
+}
+
+type base_sessionEdge {
+  cursor: String!
+  node: base_session!
+}
+
+"""
+Boolean expression to filter rows from the table "base.session". All fields are combined with a logical 'AND'.
+"""
+input base_session_bool_exp {
+  _and: [base_session_bool_exp!]
+  _not: base_session_bool_exp
+  _or: [base_session_bool_exp!]
+  x_hasura_session: json_comparison_exp
+  x_hasura_session_guid: uuid_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "base.session"
+"""
+enum base_session_constraint {
+  """
+  unique or primary key constraint on columns "x_hasura_session_guid"
+  """
+  pk_base_session
+}
+
+"""
+input type for inserting data into table "base.session"
+"""
+input base_session_insert_input {
+  x_hasura_session: json
+  x_hasura_session_guid: uuid
+}
+
+"""
+response of any mutation on the table "base.session"
+"""
+type base_session_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [base_session!]!
+}
+
+"""
+on_conflict condition type for table "base.session"
+"""
+input base_session_on_conflict {
+  constraint: base_session_constraint!
+  update_columns: [base_session_update_column!]! = []
+  where: base_session_bool_exp
+}
+
+"""Ordering options when selecting data from "base.session"."""
+input base_session_order_by {
+  x_hasura_session: order_by
+  x_hasura_session_guid: order_by
+}
+
+"""primary key columns input for table: base.session"""
+input base_session_pk_columns_input {
+  x_hasura_session_guid: uuid!
+}
+
+"""
+select columns of table "base.session"
+"""
+enum base_session_select_column {
+  """column name"""
+  x_hasura_session
+
+  """column name"""
+  x_hasura_session_guid
+}
+
+"""
+input type for updating data in table "base.session"
+"""
+input base_session_set_input {
+  x_hasura_session: json
+  x_hasura_session_guid: uuid
+}
+
+"""
+update columns of table "base.session"
+"""
+enum base_session_update_column {
+  """column name"""
+  x_hasura_session
+
+  """column name"""
+  x_hasura_session_guid
+}
+
+input base_session_updates {
+  """sets the columns of the filtered rows to the given values"""
+  _set: base_session_set_input
+
+  """filter the rows which have to be updated"""
+  where: base_session_bool_exp!
+}
+
+"""
+columns and relationships of "base.video_clip"
+"""
+type base_video_clip implements Node {
+  clip_url: String!
+  created_at: timestamp!
+  id: ID!
+  langtag: String!
+  modified_at: timestamp
+  modified_by: Int
+  title: String!
+  video_clip_guid: uuid!
+}
+
+"""
+A Relay connection object on "base.video_clip"
+"""
+type base_video_clipConnection {
+  edges: [base_video_clipEdge!]!
+  pageInfo: PageInfo!
+}
+
+type base_video_clipEdge {
+  cursor: String!
+  node: base_video_clip!
+}
+
+"""
+Boolean expression to filter rows from the table "base.video_clip". All fields are combined with a logical 'AND'.
+"""
+input base_video_clip_bool_exp {
+  _and: [base_video_clip_bool_exp!]
+  _not: base_video_clip_bool_exp
+  _or: [base_video_clip_bool_exp!]
+  clip_url: String_comparison_exp
+  created_at: timestamp_comparison_exp
+  langtag: String_comparison_exp
+  modified_at: timestamp_comparison_exp
+  modified_by: Int_comparison_exp
+  title: String_comparison_exp
+  video_clip_guid: uuid_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "base.video_clip"
+"""
+enum base_video_clip_constraint {
+  """
+  unique or primary key constraint on columns "video_clip_guid"
+  """
+  uq__video_clip__video_clip_guid
+
+  """
+  unique or primary key constraint on columns "video_clip_guid"
+  """
+  video_clip_pkey
+}
+
+"""
+input type for incrementing numeric columns in table "base.video_clip"
+"""
+input base_video_clip_inc_input {
+  modified_by: Int
+}
+
+"""
+input type for inserting data into table "base.video_clip"
+"""
+input base_video_clip_insert_input {
+  clip_url: String
+  created_at: timestamp
+  langtag: String
+  modified_at: timestamp
+  modified_by: Int
+  title: String
+  video_clip_guid: uuid
+}
+
+"""
+response of any mutation on the table "base.video_clip"
+"""
+type base_video_clip_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [base_video_clip!]!
+}
+
+"""
+input type for inserting object relation for remote table "base.video_clip"
+"""
+input base_video_clip_obj_rel_insert_input {
+  data: base_video_clip_insert_input!
+
+  """upsert condition"""
+  on_conflict: base_video_clip_on_conflict
+}
+
+"""
+on_conflict condition type for table "base.video_clip"
+"""
+input base_video_clip_on_conflict {
+  constraint: base_video_clip_constraint!
+  update_columns: [base_video_clip_update_column!]! = []
+  where: base_video_clip_bool_exp
+}
+
+"""Ordering options when selecting data from "base.video_clip"."""
+input base_video_clip_order_by {
+  clip_url: order_by
+  created_at: order_by
+  langtag: order_by
+  modified_at: order_by
+  modified_by: order_by
+  title: order_by
+  video_clip_guid: order_by
+}
+
+"""primary key columns input for table: base.video_clip"""
+input base_video_clip_pk_columns_input {
+  video_clip_guid: uuid!
+}
+
+"""
+select columns of table "base.video_clip"
+"""
+enum base_video_clip_select_column {
+  """column name"""
+  clip_url
+
+  """column name"""
+  created_at
+
+  """column name"""
+  langtag
+
+  """column name"""
+  modified_at
+
+  """column name"""
+  modified_by
+
+  """column name"""
+  title
+
+  """column name"""
+  video_clip_guid
+}
+
+"""
+input type for updating data in table "base.video_clip"
+"""
+input base_video_clip_set_input {
+  clip_url: String
+  created_at: timestamp
+  langtag: String
+  modified_at: timestamp
+  modified_by: Int
+  title: String
+  video_clip_guid: uuid
+}
+
+"""
+update columns of table "base.video_clip"
+"""
+enum base_video_clip_update_column {
+  """column name"""
+  clip_url
+
+  """column name"""
+  created_at
+
+  """column name"""
+  langtag
+
+  """column name"""
+  modified_at
+
+  """column name"""
+  modified_by
+
+  """column name"""
+  title
+
+  """column name"""
+  video_clip_guid
+}
+
+input base_video_clip_updates {
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: base_video_clip_inc_input
+
+  """sets the columns of the filtered rows to the given values"""
+  _set: base_video_clip_set_input
+
+  """filter the rows which have to be updated"""
+  where: base_video_clip_bool_exp!
+}
+
+"""
+columns and relationships of "base.viewer"
+"""
+type base_viewer implements Node {
+  created_at: timestamp!
+  feature(
+    """JSON select path"""
+    path: String
+  ): jsonb
+  id: ID!
+  ipaddr: String!
+  location: geometry
+  modified_at: timestamp
+  status_code: Int!
+
+  """An object relationship"""
+  video_clip: base_video_clip!
+  video_clip_guid: uuid!
+  viewer_guid: uuid!
+}
+
+"""
+A Relay connection object on "base.viewer"
+"""
+type base_viewerConnection {
+  edges: [base_viewerEdge!]!
+  pageInfo: PageInfo!
+}
+
+type base_viewerEdge {
+  cursor: String!
+  node: base_viewer!
+}
+
+"""append existing jsonb value of filtered columns with new jsonb value"""
+input base_viewer_append_input {
+  feature: jsonb
+}
+
+"""
+Boolean expression to filter rows from the table "base.viewer". All fields are combined with a logical 'AND'.
+"""
+input base_viewer_bool_exp {
+  _and: [base_viewer_bool_exp!]
+  _not: base_viewer_bool_exp
+  _or: [base_viewer_bool_exp!]
+  created_at: timestamp_comparison_exp
+  feature: jsonb_comparison_exp
+  ipaddr: String_comparison_exp
+  location: geometry_comparison_exp
+  modified_at: timestamp_comparison_exp
+  status_code: Int_comparison_exp
+  video_clip: base_video_clip_bool_exp
+  video_clip_guid: uuid_comparison_exp
+  viewer_guid: uuid_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "base.viewer"
+"""
+enum base_viewer_constraint {
+  """
+  unique or primary key constraint on columns "viewer_guid"
+  """
+  uq__viewer_guid__video_clip_guid
+
+  """
+  unique or primary key constraint on columns "viewer_guid"
+  """
+  viewer_pkey
+}
+
+"""
+delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+"""
+input base_viewer_delete_at_path_input {
+  feature: [String!]
+}
+
+"""
+delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+"""
+input base_viewer_delete_elem_input {
+  feature: Int
+}
+
+"""
+delete key/value pair or string element. key/value pairs are matched based on their key value
+"""
+input base_viewer_delete_key_input {
+  feature: String
+}
+
+"""
+input type for incrementing numeric columns in table "base.viewer"
+"""
+input base_viewer_inc_input {
+  status_code: Int
+}
+
+"""
+input type for inserting data into table "base.viewer"
+"""
+input base_viewer_insert_input {
+  created_at: timestamp
+  feature: jsonb
+  ipaddr: String
+  modified_at: timestamp
+  status_code: Int
+  video_clip: base_video_clip_obj_rel_insert_input
+  video_clip_guid: uuid
+  viewer_guid: uuid
+}
+
+"""
+response of any mutation on the table "base.viewer"
+"""
+type base_viewer_mutation_response {
+  """number of rows affected by the mutation"""
+  affected_rows: Int!
+
+  """data from the rows affected by the mutation"""
+  returning: [base_viewer!]!
+}
+
+"""
+on_conflict condition type for table "base.viewer"
+"""
+input base_viewer_on_conflict {
+  constraint: base_viewer_constraint!
+  update_columns: [base_viewer_update_column!]! = []
+  where: base_viewer_bool_exp
+}
+
+"""Ordering options when selecting data from "base.viewer"."""
+input base_viewer_order_by {
+  created_at: order_by
+  feature: order_by
+  ipaddr: order_by
+  location: order_by
+  modified_at: order_by
+  status_code: order_by
+  video_clip: base_video_clip_order_by
+  video_clip_guid: order_by
+  viewer_guid: order_by
+}
+
+"""primary key columns input for table: base.viewer"""
+input base_viewer_pk_columns_input {
+  viewer_guid: uuid!
+}
+
+"""prepend existing jsonb value of filtered columns with new jsonb value"""
+input base_viewer_prepend_input {
+  feature: jsonb
+}
+
+"""
+select columns of table "base.viewer"
+"""
+enum base_viewer_select_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  feature
+
+  """column name"""
+  ipaddr
+
+  """column name"""
+  location
+
+  """column name"""
+  modified_at
+
+  """column name"""
+  status_code
+
+  """column name"""
+  video_clip_guid
+
+  """column name"""
+  viewer_guid
+}
+
+"""
+input type for updating data in table "base.viewer"
+"""
+input base_viewer_set_input {
+  created_at: timestamp
+  feature: jsonb
+  ipaddr: String
+  modified_at: timestamp
+  status_code: Int
+  video_clip_guid: uuid
+  viewer_guid: uuid
+}
+
+"""
+update columns of table "base.viewer"
+"""
+enum base_viewer_update_column {
+  """column name"""
+  created_at
+
+  """column name"""
+  feature
+
+  """column name"""
+  ipaddr
+
+  """column name"""
+  modified_at
+
+  """column name"""
+  status_code
+
+  """column name"""
+  video_clip_guid
+
+  """column name"""
+  viewer_guid
+}
+
+input base_viewer_updates {
+  """append existing jsonb value of filtered columns with new jsonb value"""
+  _append: base_viewer_append_input
+
+  """
+  delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+  """
+  _delete_at_path: base_viewer_delete_at_path_input
+
+  """
+  delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+  """
+  _delete_elem: base_viewer_delete_elem_input
+
+  """
+  delete key/value pair or string element. key/value pairs are matched based on their key value
+  """
+  _delete_key: base_viewer_delete_key_input
+
+  """increments the numeric columns with given value of the filtered values"""
+  _inc: base_viewer_inc_input
+
+  """prepend existing jsonb value of filtered columns with new jsonb value"""
+  _prepend: base_viewer_prepend_input
+
+  """sets the columns of the filtered rows to the given values"""
+  _set: base_viewer_set_input
+
+  """filter the rows which have to be updated"""
+  where: base_viewer_bool_exp!
+}
+
+scalar geography
+
+input geography_cast_exp {
+  geometry: geometry_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "geography". All fields are combined with logical 'AND'.
+"""
+input geography_comparison_exp {
+  _cast: geography_cast_exp
+  _eq: geography
+  _gt: geography
+  _gte: geography
+  _in: [geography!]
+  _is_null: Boolean
+  _lt: geography
+  _lte: geography
+  _neq: geography
+  _nin: [geography!]
+
+  """is the column within a given distance from the given geography value"""
+  _st_d_within: st_d_within_geography_input
+
+  """does the column spatially intersect the given geography value"""
+  _st_intersects: geography
+}
+
+scalar geometry
+
+input geometry_cast_exp {
+  geography: geography_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "geometry". All fields are combined with logical 'AND'.
+"""
+input geometry_comparison_exp {
+  _cast: geometry_cast_exp
+  _eq: geometry
+  _gt: geometry
+  _gte: geometry
+  _in: [geometry!]
+  _is_null: Boolean
+  _lt: geometry
+  _lte: geometry
+  _neq: geometry
+  _nin: [geometry!]
+
+  """is the column within a given 3D distance from the given geometry value"""
+  _st_3d_d_within: st_d_within_input
+
+  """does the column spatially intersect the given geometry value in 3D"""
+  _st_3d_intersects: geometry
+
+  """does the column contain the given geometry value"""
+  _st_contains: geometry
+
+  """does the column cross the given geometry value"""
+  _st_crosses: geometry
+
+  """is the column within a given distance from the given geometry value"""
+  _st_d_within: st_d_within_input
+
+  """
+  is the column equal to given geometry value (directionality is ignored)
+  """
+  _st_equals: geometry
+
+  """does the column spatially intersect the given geometry value"""
+  _st_intersects: geometry
+
+  """
+  does the column 'spatially overlap' (intersect but not completely contain) the given geometry value
+  """
+  _st_overlaps: geometry
+
+  """
+  does the column have atleast one point in common with the given geometry value
+  """
+  _st_touches: geometry
+
+  """is the column contained in the given geometry value"""
+  _st_within: geometry
+}
+
+scalar json
+
+"""
+Boolean expression to compare columns of type "json". All fields are combined with logical 'AND'.
+"""
+input json_comparison_exp {
+  _eq: json
+  _gt: json
+  _gte: json
+  _in: [json!]
+  _is_null: Boolean
+  _lt: json
+  _lte: json
+  _neq: json
+  _nin: [json!]
+}
+
+scalar jsonb
+
+input jsonb_cast_exp {
+  String: String_comparison_exp
+}
+
+"""
+Boolean expression to compare columns of type "jsonb". All fields are combined with logical 'AND'.
+"""
+input jsonb_comparison_exp {
+  _cast: jsonb_cast_exp
+
+  """is the column contained in the given json value"""
+  _contained_in: jsonb
+
+  """does the column contain the given json value at the top level"""
+  _contains: jsonb
+  _eq: jsonb
+  _gt: jsonb
+  _gte: jsonb
+
+  """does the string exist as a top-level key in the column"""
+  _has_key: String
+
+  """do all of these strings exist as top-level keys in the column"""
+  _has_keys_all: [String!]
+
+  """do any of these strings exist as top-level keys in the column"""
+  _has_keys_any: [String!]
+  _in: [jsonb!]
+  _is_null: Boolean
+  _lt: jsonb
+  _lte: jsonb
+  _neq: jsonb
+  _nin: [jsonb!]
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  delete data from the table: "base.session"
+  """
+  delete_base_session(
+    """filter the rows which have to be deleted"""
+    where: base_session_bool_exp!
+  ): base_session_mutation_response
+
+  """
+  delete single row from the table: "base.session"
+  """
+  delete_base_session_by_pk(x_hasura_session_guid: uuid!): base_session
+
+  """
+  delete data from the table: "base.video_clip"
+  """
+  delete_base_video_clip(
+    """filter the rows which have to be deleted"""
+    where: base_video_clip_bool_exp!
+  ): base_video_clip_mutation_response
+
+  """
+  delete single row from the table: "base.video_clip"
+  """
+  delete_base_video_clip_by_pk(video_clip_guid: uuid!): base_video_clip
+
+  """
+  delete data from the table: "base.viewer"
+  """
+  delete_base_viewer(
+    """filter the rows which have to be deleted"""
+    where: base_viewer_bool_exp!
+  ): base_viewer_mutation_response
+
+  """
+  delete single row from the table: "base.viewer"
+  """
+  delete_base_viewer_by_pk(viewer_guid: uuid!): base_viewer
+
+  """
+  insert data into the table: "base.session"
+  """
+  insert_base_session(
+    """the rows to be inserted"""
+    objects: [base_session_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: base_session_on_conflict
+  ): base_session_mutation_response
+
+  """
+  insert a single row into the table: "base.session"
+  """
+  insert_base_session_one(
+    """the row to be inserted"""
+    object: base_session_insert_input!
+
+    """upsert condition"""
+    on_conflict: base_session_on_conflict
+  ): base_session
+
+  """
+  insert data into the table: "base.video_clip"
+  """
+  insert_base_video_clip(
+    """the rows to be inserted"""
+    objects: [base_video_clip_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: base_video_clip_on_conflict
+  ): base_video_clip_mutation_response
+
+  """
+  insert a single row into the table: "base.video_clip"
+  """
+  insert_base_video_clip_one(
+    """the row to be inserted"""
+    object: base_video_clip_insert_input!
+
+    """upsert condition"""
+    on_conflict: base_video_clip_on_conflict
+  ): base_video_clip
+
+  """
+  insert data into the table: "base.viewer"
+  """
+  insert_base_viewer(
+    """the rows to be inserted"""
+    objects: [base_viewer_insert_input!]!
+
+    """upsert condition"""
+    on_conflict: base_viewer_on_conflict
+  ): base_viewer_mutation_response
+
+  """
+  insert a single row into the table: "base.viewer"
+  """
+  insert_base_viewer_one(
+    """the row to be inserted"""
+    object: base_viewer_insert_input!
+
+    """upsert condition"""
+    on_conflict: base_viewer_on_conflict
+  ): base_viewer
+
+  """
+  update data of the table: "base.session"
+  """
+  update_base_session(
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_session_set_input
+
+    """filter the rows which have to be updated"""
+    where: base_session_bool_exp!
+  ): base_session_mutation_response
+
+  """
+  update single row of the table: "base.session"
+  """
+  update_base_session_by_pk(
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_session_set_input
+    pk_columns: base_session_pk_columns_input!
+  ): base_session
+
+  """
+  update multiples rows of table: "base.session"
+  """
+  update_base_session_many(
+    """updates to execute, in order"""
+    updates: [base_session_updates!]!
+  ): [base_session_mutation_response]
+
+  """
+  update data of the table: "base.video_clip"
+  """
+  update_base_video_clip(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: base_video_clip_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_video_clip_set_input
+
+    """filter the rows which have to be updated"""
+    where: base_video_clip_bool_exp!
+  ): base_video_clip_mutation_response
+
+  """
+  update single row of the table: "base.video_clip"
+  """
+  update_base_video_clip_by_pk(
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: base_video_clip_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_video_clip_set_input
+    pk_columns: base_video_clip_pk_columns_input!
+  ): base_video_clip
+
+  """
+  update multiples rows of table: "base.video_clip"
+  """
+  update_base_video_clip_many(
+    """updates to execute, in order"""
+    updates: [base_video_clip_updates!]!
+  ): [base_video_clip_mutation_response]
+
+  """
+  update data of the table: "base.viewer"
+  """
+  update_base_viewer(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: base_viewer_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: base_viewer_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+    """
+    _delete_elem: base_viewer_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: base_viewer_delete_key_input
+
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: base_viewer_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: base_viewer_prepend_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_viewer_set_input
+
+    """filter the rows which have to be updated"""
+    where: base_viewer_bool_exp!
+  ): base_viewer_mutation_response
+
+  """
+  update single row of the table: "base.viewer"
+  """
+  update_base_viewer_by_pk(
+    """append existing jsonb value of filtered columns with new jsonb value"""
+    _append: base_viewer_append_input
+
+    """
+    delete the field or element with specified path (for JSON arrays, negative integers count from the end)
+    """
+    _delete_at_path: base_viewer_delete_at_path_input
+
+    """
+    delete the array element with specified index (negative integers count from the end). throws an error if top level container is not an array
+    """
+    _delete_elem: base_viewer_delete_elem_input
+
+    """
+    delete key/value pair or string element. key/value pairs are matched based on their key value
+    """
+    _delete_key: base_viewer_delete_key_input
+
+    """increments the numeric columns with given value of the filtered values"""
+    _inc: base_viewer_inc_input
+
+    """prepend existing jsonb value of filtered columns with new jsonb value"""
+    _prepend: base_viewer_prepend_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: base_viewer_set_input
+    pk_columns: base_viewer_pk_columns_input!
+  ): base_viewer
+
+  """
+  update multiples rows of table: "base.viewer"
+  """
+  update_base_viewer_many(
+    """updates to execute, in order"""
+    updates: [base_viewer_updates!]!
+  ): [base_viewer_mutation_response]
+}
+
+"""column ordering options"""
+enum order_by {
+  """in ascending order, nulls last"""
+  asc
+
+  """in ascending order, nulls first"""
+  asc_nulls_first
+
+  """in ascending order, nulls last"""
+  asc_nulls_last
+
+  """in descending order, nulls first"""
+  desc
+
+  """in descending order, nulls first"""
+  desc_nulls_first
+
+  """in descending order, nulls last"""
+  desc_nulls_last
+}
+
+type query_root {
+  """
+  execute function "base.fn_get_session" which returns "base.session"
+  """
+  base_fn_get_session_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_session_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_session_order_by!]
+
+    """filter the rows returned"""
+    where: base_session_bool_exp
+  ): base_sessionConnection!
+
+  """
+  fetch data from the table: "base.session"
+  """
+  base_session_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_session_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_session_order_by!]
+
+    """filter the rows returned"""
+    where: base_session_bool_exp
+  ): base_sessionConnection!
+
+  """
+  fetch data from the table: "base.video_clip"
+  """
+  base_video_clip_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_video_clip_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_video_clip_order_by!]
+
+    """filter the rows returned"""
+    where: base_video_clip_bool_exp
+  ): base_video_clipConnection!
+
+  """
+  fetch data from the table: "base.viewer"
+  """
+  base_viewer_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_viewer_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_viewer_order_by!]
+
+    """filter the rows returned"""
+    where: base_viewer_bool_exp
+  ): base_viewerConnection!
+  node(
+    """A globally unique id"""
+    id: ID!
+  ): Node
+}
+
+input st_d_within_geography_input {
+  distance: Float!
+  from: geography!
+  use_spheroid: Boolean = true
+}
+
+input st_d_within_input {
+  distance: Float!
+  from: geometry!
+}
+
+type subscription_root {
+  """
+  execute function "base.fn_get_session" which returns "base.session"
+  """
+  base_fn_get_session_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_session_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_session_order_by!]
+
+    """filter the rows returned"""
+    where: base_session_bool_exp
+  ): base_sessionConnection!
+
+  """
+  fetch data from the table: "base.session"
+  """
+  base_session_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_session_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_session_order_by!]
+
+    """filter the rows returned"""
+    where: base_session_bool_exp
+  ): base_sessionConnection!
+
+  """
+  fetch data from the table: "base.video_clip"
+  """
+  base_video_clip_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_video_clip_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_video_clip_order_by!]
+
+    """filter the rows returned"""
+    where: base_video_clip_bool_exp
+  ): base_video_clipConnection!
+
+  """
+  fetch data from the table: "base.viewer"
+  """
+  base_viewer_connection(
+    after: String
+    before: String
+
+    """distinct select on columns"""
+    distinct_on: [base_viewer_select_column!]
+    first: Int
+    last: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [base_viewer_order_by!]
+
+    """filter the rows returned"""
+    where: base_viewer_bool_exp
+  ): base_viewerConnection!
+  node(
+    """A globally unique id"""
+    id: ID!
+  ): Node
+}
+
+scalar timestamp
+
+"""
+Boolean expression to compare columns of type "timestamp". All fields are combined with logical 'AND'.
+"""
+input timestamp_comparison_exp {
+  _eq: timestamp
+  _gt: timestamp
+  _gte: timestamp
+  _in: [timestamp!]
+  _is_null: Boolean
+  _lt: timestamp
+  _lte: timestamp
+  _neq: timestamp
+  _nin: [timestamp!]
+}
+
+scalar uuid
+
+"""
+Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'.
+"""
+input uuid_comparison_exp {
+  _eq: uuid
+  _gt: uuid
+  _gte: uuid
+  _in: [uuid!]
+  _is_null: Boolean
+  _lt: uuid
+  _lte: uuid
+  _neq: uuid
+  _nin: [uuid!]
+}
+

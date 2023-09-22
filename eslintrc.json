@@ -1,0 +1,110 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "linebreak-style": [
+            "error",
+            "unix"
+        ],
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx",
+                    ".ts",
+                    ".tsx"
+                ]
+            }
+        ],
+        "import/extensions": [
+            "error",
+            "never",
+            {
+                "css": "always",
+                "json": "always"
+            }
+        ],
+        "no-console": "warn",
+        "semi": [
+            "error",
+            "always"
+        ],
+        "react/jsx-curly-brace-presence": [
+            1,
+            "never"
+        ],
+        "object-curly-spacing": [
+            "error",
+            "always"
+        ],
+        "react/jsx-uses-vars": 1,
+        "react/jsx-uses-react": 1,
+        "react/react-in-jsx-scope": 1,
+        "no-unused-vars": "warn",
+        "max-len": [
+            2,
+            280
+        ],
+        "import/prefer-default-export": "off",
+        "no-tabs": 0,
+        "no-plusplus": "off",
+        "react/jsx-props-no-spreading": "off",
+        "camelcase": "off",
+        "import/no-unresolved": "off",
+        "jsx-a11y/label-has-associated-control": "off",
+        "no-param-reassign": 0,
+        "react/destructuring-assignment": "off",
+        "react/prefer-stateless-function": "warn",
+        "no-use-before-define": "off",
+        "react/require-default-props": "off",
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "global-require": 0,
+        "react/button-has-type": 0,
+        "quotes": [
+            "warn",
+            "double"
+        ],
+        "object-curly-newline": 0,
+        "comma-dangle": [
+            2,
+            "always-multiline"
+        ],
+        "react/prop-types": 0,
+        "jsx-a11y/click-events-have-key-events": 0,
+        "react/no-did-update-set-state": 0,
+        "eol-last": 0,
+        "react/jsx-no-bind": ["error",
+            {
+                "ignoreDOMComponents": true,
+                "ignoreRefs": true,
+                "allowArrowFunctions": true,
+                "allowFunctions": true,
+                "allowBind": true
+            }
+        ]
+    }
+}

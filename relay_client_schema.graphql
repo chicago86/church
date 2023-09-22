@@ -1,0 +1,6 @@
+# """
+# Sample client only field
+# """
+extend type base_video_clip {
+  value: String
+}
