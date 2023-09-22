@@ -10,10 +10,13 @@ import { Grid } from "../grid"
 import { Loader } from "../loader"
 import { BaseStreamSubscription } from "../subscriptions"
 import { VideoLibrary } from "../video-library"
-import s from './home-root.module.scss'
+import styles from './home-root.module.scss'
 import { useHomeRoot } from "./hooks/use-home-root"
 import { MapLeaflet } from "./map-leaflet"
 import { homeRootQuery } from "./__generated__/homeRootQuery.graphql"
+import { Map } from "../ui2/map"
+import { Table } from "../ui2/table"
+import { Sidebar } from "../ui2/side-bar";
 
 const { useQueryLoader } = require("react-relay")
 const preloadableRequest = require("./__generated__/homeRootQuery.graphql")
@@ -104,14 +107,12 @@ const HomeRoot: React.FC<Props> = (props) => {
   BaseStreamSubscription()
 
   return <ErrorBoundaryWithRetry>
-    <div className={s.container}>
-      {/* <div ref={panelRef} className={classNames(s.panel)}>
-        <VideoLibrary />
-        <Grid preloadedQuery={preloadedQuery || props.prepared.preloadedQuery} />
+    <div className={styles.homeRoot}>
+      <div className={styles.content}>
+        <Map />
+        <Table />
       </div>
-      <Suspense fallback={<Loader medium />}>
-        <MapLeaflet preloadedQuery={preloadedQuery || props.prepared.preloadedQuery} />
-      </Suspense> */}
+      <Sidebar />
     </div>
   </ErrorBoundaryWithRetry>
 }
