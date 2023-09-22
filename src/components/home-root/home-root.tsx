@@ -110,7 +110,7 @@ const HomeRoot: React.FC<Props> = (props) => {
     <div className={styles.homeRoot}>
       <div className={styles.content}>
         <Map />
-        <Table />
+        <Grid preloadedQuery={preloadedQuery || props.prepared.preloadedQuery} />
       </div>
       <Sidebar />
     </div>
