@@ -27,7 +27,7 @@
   transform: rotate(45deg) translate(-5px, -6px);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   
   .burger{
     display: block;
@@ -35,4 +35,12 @@
   .burger.active {
     display: block;
   }
+}
+@media (max-width: 1024px){
+
+
+  .opened{
+   
+  }
+  
 }

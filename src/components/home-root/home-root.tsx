@@ -112,7 +112,7 @@ const HomeRoot: React.FC<Props> = (props) => {
         <Map />
         <Table />
       </div>
-      <Sidebar />
+      <Sidebar isMobile/> 
     </div>
   </ErrorBoundaryWithRetry>
 }
