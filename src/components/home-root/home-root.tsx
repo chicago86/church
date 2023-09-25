@@ -112,7 +112,7 @@ const HomeRoot: React.FC<Props> = (props) => {
         <Map />
         <Grid preloadedQuery={preloadedQuery || props.prepared.preloadedQuery} />
       </div>
-      <Sidebar />
+      <Sidebar/> 
     </div>
   </ErrorBoundaryWithRetry>
 }
