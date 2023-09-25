@@ -1,22 +1,20 @@
 import React, { useState } from "react";
-import styles from "../burger-menu/burger-menu.module.scss";
-import SideBar from "../side-bar/side-bar";
+import classnames from "classnames";
+import styles from "./burger-menu.module.scss";
+import { Sidebar } from "../side-bar";
 
-const BurgerMenu = () => {
+const BurgerMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
+  const toggle = () => {
     setIsOpen(!isOpen);
-  };
+  }
 
   return (
-    <div>
-      <div className={`${styles.burger} ${isOpen ? styles.active : ""}`} onClick={toggleMenu}>
-        <div className={styles.bar1}></div>
-        <div className={styles.bar2}></div>
-        <div className={styles.bar3}></div>
-      </div>
-      {isOpen && <SideBar />}
+    <div className={classnames(styles.burger, { [styles.active]: isOpen })} onClick={toggle}>
+      <div className={styles.bar} />
+      <div className={classnames(styles.backDrop, { [styles.active]: isOpen })} onClick={toggle} />
+      <Sidebar isMobile isOpen={isOpen} />
     </div>
   );
 };
