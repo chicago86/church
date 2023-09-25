@@ -7,3 +7,10 @@
     align-items: center;
     max-width: 350px;
 }
+
+.isMobile {
+    display: none;
+    @media(max-width: 600px) {
+        display: block;
+    }
+}
