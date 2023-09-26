@@ -3,7 +3,7 @@ import { PreloadedQuery, usePreloadedQuery } from "react-relay"
 import { Virtuoso } from 'react-virtuoso'
 import { homeRootQuery, homeRootQuery$data } from "../home-root/__generated__/homeRootQuery.graphql"
 import styles from './grid.module.scss'
-import { format, parseISO, addSeconds } from 'date-fns';
+import { format, parseISO, addSeconds  } from 'date-fns';
 
 const preloadableRequest = require("../home-root/__generated__/homeRootQuery.graphql")
 
