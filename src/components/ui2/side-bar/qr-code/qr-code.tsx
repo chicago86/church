@@ -1,5 +1,6 @@
 import styles from './qr-code.module.scss';
 import qrIcon from './images/qr-code.png';
+
 interface Props {
 }
 

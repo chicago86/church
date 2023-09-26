@@ -1,7 +1,37 @@
-.row {
+.videoLibrary {
+  height: 100%;
+  width: 100%;
+  padding: 20px 0;
+}
+
+.linkItem {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
-  background-color: lightgray;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.flag {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+
+  & img {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.emptyHeading {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+
+.qrCode {
+  height: 125px;
+  width: 125px;
+  border-radius: 5px;
 }
