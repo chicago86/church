@@ -3,7 +3,7 @@ import { PreloadedQuery, usePreloadedQuery } from "react-relay"
 import { Virtuoso } from 'react-virtuoso'
 import { homeRootQuery, homeRootQuery$data } from "../home-root/__generated__/homeRootQuery.graphql"
 import styles from './grid.module.scss'
-import { format, parseISO, addSeconds } from 'date-fns';
+import { format, parseISO, addSeconds  } from 'date-fns';
 
 const preloadableRequest = require("../home-root/__generated__/homeRootQuery.graphql")
 
@@ -43,7 +43,6 @@ export const Grid: React.FC<Props> = ({ preloadedQuery }) => {
     return index % 2 === 0 ? styles.rowEven : styles.rowOdd;
   };
 
-
   return (
     <div className={styles.grid}>
       <div className={styles.headerRow}>
@@ -57,9 +56,9 @@ export const Grid: React.FC<Props> = ({ preloadedQuery }) => {
         initialTopMostItemIndex={0}
         itemContent={(index: number, item) => (
           <div className={`${styles.row} ${calculateRowClass(index)}`}>
-            <div>{item.time}</div>
+            <div className={styles.time}>{item.time}</div>
             <div className={styles.country}>{item.country}</div>
-            <div>{item.city}</div>
+            <div className={styles.city}>{item.city}</div>
           </div>
         )}
       />

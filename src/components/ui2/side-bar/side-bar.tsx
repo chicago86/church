@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import styles from './side-bar.module.scss';
 import { Socials } from './socials';
-import { VideoLinks } from './video-links';
+import { VideoLibrary } from '../../video-library';
 
 
 interface Props {
@@ -15,7 +15,7 @@ const SideBar: React.FC<Props> = ({ isMobile, isOpen }) => {
         { [styles.active]: isOpen }
     )}
         onClick={(e) => e.stopPropagation()}>
-        <VideoLinks />
+        <VideoLibrary/>
         <Socials />
     </div>
 }

@@ -5,8 +5,9 @@ import { PreloadedQuery, useMutation, usePreloadedQuery } from 'react-relay';
 import { v4 as uuidv4 } from "uuid";
 import { RouteData } from '../../types';
 import { useData } from "./use-data";
-import s from "./video-player.module.scss";
+import styles from "./video-player.module.scss";
 import { videoPlayerRootQuery } from "./__generated__/videoPlayerRootQuery.graphql";
+import { QRCodeSVG } from "qrcode.react";
 
 const preloadableRequest = require("./__generated__/videoPlayerRootQuery.graphql")
 
@@ -99,8 +100,20 @@ const VideoPlayer: React.FC<Props> = (props) => {
   console.log('routeData', routeData)
   console.log('clientData', clientData)
 
+  const printQRCode = () => {
+    const svgElement = document.getElementById('qr-print'); // Get SVG element by id
+    if (!svgElement) return;
+    
+    const printWindow = window.open('', '_blank'); // Open a new window
+    printWindow?.document.write('<html><head><title>Print QR Code</title></head><body>');
+    printWindow?.document.write(svgElement.outerHTML); // Write the SVG element to the new window
+    printWindow?.document.write('</body></html>');
+    printWindow?.document.close();
+    printWindow?.print();
+  };
 
-  return <div className={s.container}>
+
+  return <div className={styles.videoPlayer}>
     <video
       id="my-player"
       className="video-js"
@@ -120,6 +133,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
       </p>
     </video>
     <button onClick={onClick}>Save viewer info</button>
+    <button className={styles.print} onClick={printQRCode}>Print</button>
+    <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode}/>
   </div>
 }
 
