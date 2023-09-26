@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from './side-bar.module.scss';
 import { Socials } from './socials';
-import { VideoLinks } from './video-links';
 import { VideoLibrary } from '../../video-library';
 
 

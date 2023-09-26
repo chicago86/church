@@ -43,7 +43,6 @@ export const Grid: React.FC<Props> = ({ preloadedQuery }) => {
     return index % 2 === 0 ? styles.rowEven : styles.rowOdd;
   };
 
-
   return (
     <div className={styles.grid}>
       <div className={styles.headerRow}>
