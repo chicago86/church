@@ -10,12 +10,12 @@ interface Props {
 }
 
 const socialIcons = [
-    {id: 1, icon: facebook, link: 'insertLink', name: 'facebook'},
-    {id: 2, icon: instagram, link: 'insertLink', name: 'instagram'},
-    {id: 3, icon: linkedin, link: 'insertLink', name: 'linedin'},
-    {id: 4, icon: telegram, link: 'insertLink', name: 'telegram'},
-    {id: 5, icon: twitter, link: 'insertLink', name: 'twitter'},
-    {id: 6, icon: youtube, link: 'insertLink', name: 'youtube'}
+    {id: 1, icon: facebook, link: 'https://www.facebook.com', name: 'facebook'},
+    {id: 2, icon: instagram, link: 'https://www.instagram.com', name: 'instagram'},
+    {id: 3, icon: linkedin, link: 'https://www.linkedin.com', name: 'linedin'},
+    {id: 4, icon: telegram, link: 'https://www.telegram.com', name: 'telegram'},
+    {id: 5, icon: twitter, link: 'https://www.twitter.com', name: 'twitter'},
+    {id: 6, icon: youtube, link: 'https://www.youtube.com', name: 'youtube'}
 ]
 
 const Socials: React.FC<Props> = (props) => {

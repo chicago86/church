@@ -5,17 +5,19 @@ import { VideoLinks } from './video-links';
 
 
 interface Props {
-    isMobile?: boolean;
-    
+    isMobile?: boolean
+    isOpen?: boolean;
 }
 
-const SideBar: React.FC<Props> = ({ isMobile }) => {
-    return (
-        <div className={classNames(styles.sideBar, { [styles.mobile]: isMobile })}>
-            <VideoLinks />
-            <Socials />
-        </div>
-    );
+const SideBar: React.FC<Props> = ({ isMobile, isOpen }) => {
+    return <div className={classNames(styles.sideBar,
+        { [styles.mobile]: isMobile },
+        { [styles.active]: isOpen }
+    )}
+        onClick={(e) => e.stopPropagation()}>
+        <VideoLinks />
+        <Socials />
+    </div>
 }
 
 export default SideBar;
