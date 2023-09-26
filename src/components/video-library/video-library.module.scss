@@ -20,6 +20,7 @@
   -webkit-box-shadow: 8px -8px 8px 0px rgba(0, 0, 0, 0.25);
     -moz-box-shadow: 8px -8px 8px 0px rgba(0, 0, 0, 0.25);
     box-shadow: 8px -8px 8px 0px rgba(0, 0, 0, 0.25);
+  margin-top: 10px;
 
   & img {
     width: 100%;
@@ -37,4 +38,15 @@
   height: 125px;
   width: 125px;
   border-radius: 5px;
+}
+@media screen and (max-width: 600px) {
+  .qrCode {
+    height: 100px;
+    width: 100px;
+  }
+
+  .flag {
+    width: 100px;
+    height: 100px;
+  }
 }
