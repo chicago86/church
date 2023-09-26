@@ -57,9 +57,9 @@ export const Grid: React.FC<Props> = ({ preloadedQuery }) => {
         initialTopMostItemIndex={0}
         itemContent={(index: number, item) => (
           <div className={`${styles.row} ${calculateRowClass(index)}`}>
-            <div>{item.time}</div>
+            <div className={styles.time}>{item.time}</div>
             <div className={styles.country}>{item.country}</div>
-            <div>{item.city}</div>
+            <div className={styles.city}>{item.city}</div>
           </div>
         )}
       />
