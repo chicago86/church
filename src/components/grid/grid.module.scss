@@ -6,27 +6,57 @@
 }
 
 .virtuoso {
-  flex-grow: 1; // The virtuoso will grow to take the remaining available space
-  overflow-y: auto; // to handle the overflow and possibly the scrollbar for virtuoso content.
-  // Other styles ...
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .headerRow {
-  flex-shrink: 0;
+  background-color: #abd3df;
   display: flex;
   justify-content: space-between;
-  // Other styles...
+  border-top: 5px solid white;
+  border-bottom: 5px solid white;
 }
 
 .row {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  // Other styles ...
+}
+
+.rowEven {
+  background-color: #bdbdbd;
+}
+
+.rowOdd {
+  background-color: #dddddd;
+  border-bottom: 1px solid white;
+  border-top: 1px solid white;
 }
 
 .column {
-  color: red;
-  // Other styles ...
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: space-around;
+  flex: 1;
+  font-size: 24px;
+  font-weight: 600;
+  color: #485458;
+  width: 33.3%;
+  height: 50px;
+}
+
+.country,
+.time,
+.city {
+  width: 33.3%;
+  height: 30px;
+  padding-left: 30px;
+  vertical-align: middle;
+  line-height: 30px;
+}
+
+.country {
+  border-left: 5px solid white;
+  border-right: 5px solid white;
 }

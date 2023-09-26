@@ -17,7 +17,6 @@ const SideBar: React.FC<Props> = ({ isMobile, isOpen }) => {
     )}
         onClick={(e) => e.stopPropagation()}>
         <VideoLibrary/>
-        {/* <VideoLinks /> */}
         <Socials />
     </div>
 }

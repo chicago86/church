@@ -12,54 +12,59 @@ interface Props {
 }
 
 export const Grid: React.FC<Props> = ({ preloadedQuery }) => {
- // Possible values for country and city
- const countries = ['USA', 'Canada', 'Germany', 'France', 'Australia'];
- const cities = ['New York', 'Toronto', 'Berlin', 'Paris', 'Sydney'];
- 
- // Function to generate a random item
- const getRandomItem = () => ({
-   time: format(addSeconds(new Date(), Math.floor(Math.random() * 3600)), 'HH:mm:ss'),
-   country: countries[Math.floor(Math.random() * countries.length)],
-   city: cities[Math.floor(Math.random() * cities.length)],
- });
+  // Possible values for country and city
+  const countries = ['USA', 'Canada', 'Germany', 'France', 'Australia'];
+  const cities = ['New York', 'Toronto', 'Berlin', 'Paris', 'Sydney'];
 
- // Initialize state with 25 random items
- const [data, setData] = useState(() => Array.from({ length: 25 }, () => getRandomItem()));
+  // Function to generate a random item
+  const getRandomItem = () => ({
+    time: format(addSeconds(new Date(), Math.floor(Math.random() * 3600)), 'HH:mm:ss'),
+    country: countries[Math.floor(Math.random() * countries.length)],
+    city: cities[Math.floor(Math.random() * cities.length)],
+  });
 
- useEffect(() => {
-   // Setup interval to update data every second
-   const intervalId = setInterval(() => {
-     setData(prevData => [
-       getRandomItem(),
-       // Keep the previous items, excluding the last one
-       ...prevData.slice(0, -1)
-     ]);
-   }, 1000);
-   // Cleanup interval on component unmount
-   return () => clearInterval(intervalId);
- }, []);
+  // Initialize state with 25 random items
+  const [data, setData] = useState(() => Array.from({ length: 25 }, () => getRandomItem()));
 
- return (
-   <div className={styles.grid}>
-     <div className={styles.headerRow}>
-       <div className={styles.column}>Time</div>
-       <div className={styles.column}>Country</div>
-       <div className={styles.column}>City</div>
-     </div>
-     <Virtuoso
-       className={styles.virtuoso}
-       data={data}
-       initialTopMostItemIndex={0} // to keep the scroll at the top
-       itemContent={(index, item) => (
-         <div className={styles.row}>
-           <div>{item.time}</div>
-           <div>{item.country}</div>
-           <div>{item.city}</div>
-         </div>
-       )}
-     />
-   </div>
- );
+  useEffect(() => {
+    // Setup interval to update data every second
+    const intervalId = setInterval(() => {
+      setData(prevData => [
+        getRandomItem(),
+        // Keep the previous items, excluding the last one
+        ...prevData.slice(0, -1)
+      ]);
+    }, 1000);
+    // Cleanup interval on component unmount
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const calculateRowClass = (index: number) => {
+    return index % 2 === 0 ? styles.rowEven : styles.rowOdd;
+  };
+
+
+  return (
+    <div className={styles.grid}>
+      <div className={styles.headerRow}>
+        <div className={styles.column}>Time</div>
+        <div className={styles.column}>Country</div>
+        <div className={styles.column}>City</div>
+      </div>
+      <Virtuoso
+        className={styles.virtuoso}
+        data={data}
+        initialTopMostItemIndex={0}
+        itemContent={(index: number, item) => (
+          <div className={`${styles.row} ${calculateRowClass(index)}`}>
+            <div className={styles.time}>{item.time}</div>
+            <div className={styles.country}>{item.country}</div>
+            <div className={styles.city}>{item.city}</div>
+          </div>
+        )}
+      />
+    </div>
+  );
 };
 
 
