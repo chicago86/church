@@ -22,7 +22,7 @@ const Socials: React.FC<Props> = (props) => {
     return <div className={styles.socials}>
         {
             socialIcons.map(elem => (
-                <div key={elem.id} className={styles.social}><img src={elem.icon} alt={elem.name} /></div>
+                <div key={elem.id} className={styles.social}><a className={styles.socialA} href={elem.link} target='_blank'><img src={elem.icon} alt={elem.name} /></a></div>
             ))
         }
     </div>
