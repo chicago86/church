@@ -5,3 +5,9 @@
   border-right: 5px solid white;
   border-top: 5px solid white;
 }
+
+:global {
+  .leaflet-bottom.leaflet-right {
+    display: none;
+  }
+}

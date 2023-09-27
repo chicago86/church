@@ -1,48 +1,49 @@
 .videoPlayer {
-   height: 100%;
-   width: 100%;
-   max-width: 1360px;
-   margin: 0 auto;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding: 24px 16px;
+    height: 100%;
+    width: 100%;
+    max-width: 1360px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
 }
 
 .qrCode {
-   display: block;
-   border-radius: 5px;
-   width: 200px;
-   height: 200px;
+    display: block;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
 }
+
 @keyframes slideme {
-   0% {
-       left: -30px;
-       margin-left: 0px;
-   }
-   30% {
-       left: 110%;
-       margin-left: 80px;
-   }
-   100% {
-       left: 110%;
-       margin-left: 80px;
-   }
+    0% {
+        left: -30px;
+        margin-left: 0px;
+    }
+    30% {
+        left: 110%;
+        margin-left: 80px;
+    }
+    100% {
+        left: 110%;
+        margin-left: 80px;
+    }
 }
 
 .print {
-   display: block;
-   border: 2px solid;
-   cursor: pointer;
-   margin: 40px 0;
-   padding: 15px 40px;
-   text-align: center;
-   transition: 0.5s;
-   background-size: 200% auto;
-   color: white;
-   box-shadow: 0 0 20px #eee;
-   border-radius: 10px;
-   background-image: linear-gradient(to right, #003CC5 0%, #0B63F6 51%, #003CC5 100%);
+    display: block;
+    border: 2px solid;
+    cursor: pointer;
+    margin: 40px 0;
+    padding: 15px 40px;
+    text-align: center;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    background-image: linear-gradient(to right, #003cc5 0%, #0b63f6 51%, #003cc5 100%);
 }
 
 .print:hover {

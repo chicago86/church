@@ -1,8 +1,7 @@
 import classNames from "classnames"
 import React, { useState } from "react"
 import { v4 as uuidv4 } from "uuid"
-import { getVariables } from "../../../utils"
-import { getBounds } from "../map-leaflet/utils"
+import { getVariables } from "../../../utils";
 import magnifier from './images/magnifier.svg'
 import s from './search-box.module.scss'
 

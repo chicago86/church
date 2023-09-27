@@ -12,7 +12,6 @@ import { BaseStreamSubscription } from "../subscriptions"
 import { VideoLibrary } from "../video-library"
 import styles from './home-root.module.scss'
 import { useHomeRoot } from "./hooks/use-home-root"
-import { MapLeaflet } from "./map-leaflet"
 import { homeRootQuery } from "./__generated__/homeRootQuery.graphql"
 import { Map } from "../ui2/map"
 import { Table } from "../ui2/table"
