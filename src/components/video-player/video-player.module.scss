@@ -9,21 +9,12 @@
    padding: 24px 16px;
 }
 
-.print {
-   display: block;
-   border: 2px solid;
-   cursor: pointer;
-   margin-bottom: 24px;
-}
-
 .qrCode {
    display: block;
    border-radius: 5px;
+   width: 200px;
+   height: 200px;
 }
-.print{
-
-}
-
 @keyframes slideme {
    0% {
        left: -30px;
@@ -40,8 +31,11 @@
 }
 
 .print {
-   margin-top: 15px;
-   padding: 10px 30px;
+   display: block;
+   border: 2px solid;
+   cursor: pointer;
+   margin: 40px 0;
+   padding: 15px 40px;
    text-align: center;
    transition: 0.5s;
    background-size: 200% auto;
