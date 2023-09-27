@@ -14,6 +14,8 @@ import { toGeoJSON } from './utils'
 
 const preloadableRequest = require("../__generated__/homeRootQuery.graphql")
 
+
+
 interface Props {
   preloadedQuery: PreloadedQuery<homeRootQuery>,
 }

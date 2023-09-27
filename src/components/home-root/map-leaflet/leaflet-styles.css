@@ -1,6 +1,3 @@
-  .leaflet-control-attribution.leaflet-control {
-    display: none !important;
-  }
 
   div.leaflet-top.leaflet-left {
     top: calc(var(--header-desktop) + 5px);
@@ -45,3 +42,5 @@
   .bringToFront {
     z-index: 1;
   }
+  
+ 
