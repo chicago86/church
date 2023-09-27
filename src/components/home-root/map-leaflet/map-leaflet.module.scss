@@ -8,6 +8,16 @@
   height: 100%;
   width: 100%;
 }
-  .leaflet-bottom .leaflet-right {
+
+@media (min-width: 1024px) {
+  :global(.leaflet-touch .leaflet-control-attribution, .leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar) {
     display: none !important;
   }
+}
+
+
+// .noZoomControl {
+// :global(.leaflet-top.leaflet-left) {
+//   display: none !important;
+// }
+// }
