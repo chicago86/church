@@ -9,7 +9,6 @@ import styles from "./video-player.module.scss";
 import { videoPlayerRootQuery } from "./__generated__/videoPlayerRootQuery.graphql";
 import { QRCodeSVG } from "qrcode.react";
 import YouTube from 'react-youtube';
-import debounce from 'lodash.debounce';
 
 const preloadableRequest = require("./__generated__/videoPlayerRootQuery.graphql")
 
@@ -48,11 +47,11 @@ const VideoPlayer: React.FC<Props> = (props) => {
   }
 `);
 
-  const onClick = debounce(() => {
+  const onClick = () => {
     if (!data) { console.log('Data undefined'); console.log('data', data); return }
     if (!clientData?.IPv4) { console.log('clientData undefined'); console.log('clientData', clientData); return }
-    // if (viewerGuid) { console.log('Already submitted'); console.log('viewerGuid', viewerGuid); return }
-    console.log('TRIGGER');
+    if (viewerGuid) { console.log('Already submitted'); console.log('viewerGuid', viewerGuid); return }
+
     const feature: Feature = {
       id: uuidv4(),
       type: "Feature" as "Feature",
@@ -65,8 +64,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
       },
       properties: {
         address: {
-          country: clientData.country_name,
-          city: clientData.city
+          country: "UK",
+          city: "London"
         }
       },
     };
@@ -78,6 +77,7 @@ const VideoPlayer: React.FC<Props> = (props) => {
         ipaddr: clientData?.IPv4
       }
     }
+
 
     console.log('About to submit viewer data')
     commit({
@@ -91,25 +91,14 @@ const VideoPlayer: React.FC<Props> = (props) => {
         console.error(err)
       },
     })
-  }, 1000);
 
-  const onPauseOrEnd = () => onClick();
-  // let back end api know that user left the page, which means finished watching the video
-  useEffect(() => {
-    const handleUnload = () => {
-      onPauseOrEnd();
-    };
-    
-    window.addEventListener('beforeunload', handleUnload);
-    return () =>  window.removeEventListener('beforeunload', handleUnload);
-  }, []); // Empty dependency array ensures this effect runs once on mount and cleans up on unmount
-  
-  
+  }
 
-  // console.log('The following values are available to use')
-  // console.log('data', data)
-  // console.log('routeData', routeData)
-  // console.log('clientData', clientData)
+
+  console.log('The following values are available to use')
+  console.log('data', data)
+  console.log('routeData', routeData)
+  console.log('clientData', clientData)
 
   const printQRCode = () => {
     const svgElement = document.getElementById('qr-print'); // Get SVG element by id
@@ -127,7 +116,7 @@ const VideoPlayer: React.FC<Props> = (props) => {
     height: '390',
     width: '640',
     playerVars: {
-      autoplay: 0, 
+      autoplay: 1, // If you want the video to play as soon as it loads.
     },
   };
 
@@ -139,10 +128,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
   <YouTube
     videoId={videoId!}
     opts={opts}
-    onPlay={onClick}
-    onPause={onPauseOrEnd}
-    onEnd={onPauseOrEnd}
   />
+  <button onClick={onClick}>Save viewer info</button>
   <button className={styles.print} onClick={printQRCode}>Print</button>
   <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode}/>
 </div>
