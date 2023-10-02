@@ -1,3 +1,5 @@
+// BurgerMenu.tsx
+
 import React, { useState } from "react";
 import classnames from "classnames";
 import styles from "./burger-menu.module.scss";
@@ -10,11 +12,15 @@ const BurgerMenu: React.FC = () => {
     setIsOpen(!isOpen);
   }
 
+  const closeMenu = () => {
+    setIsOpen(false);
+  }
+
   return (
     <div className={classnames(styles.burger, { [styles.active]: isOpen })} onClick={toggle}>
       <div className={styles.bar} />
       <div className={classnames(styles.backDrop, { [styles.active]: isOpen })} onClick={toggle} />
-      <Sidebar isMobile isOpen={isOpen} />
+      <Sidebar isMobile isOpen={isOpen} closeMenu={closeMenu} />
     </div>
   );
 };

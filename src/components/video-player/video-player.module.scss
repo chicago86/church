@@ -21,10 +21,12 @@
         left: -30px;
         margin-left: 0px;
     }
+
     30% {
         left: 110%;
         margin-left: 80px;
     }
+
     100% {
         left: 110%;
         margin-left: 80px;
@@ -48,4 +50,31 @@
 
 .print:hover {
     background-position: right center;
+}
+
+.backButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-direction: row;
+
+    &:hover {
+        .backButtonImg {
+            transform: translateX(-10px);
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .backButtonImg {
+            width: 50px;
+            height: 50px;
+        }
+    }
+}
+
+.backButtonImg {
+    width: 100px;
+    height: 100px;
+    margin: 20px 20px 20px 0;
+    transition: transform 0.6s ease;
 }
