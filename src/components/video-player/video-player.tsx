@@ -126,8 +126,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
   };
 
   const opts = {
-    height: '390',
-    width: '640',
+    height: '0',
+    width: '100%',
     playerVars: {
       autoplay: 0, 
     },
@@ -143,13 +143,9 @@ const VideoPlayer: React.FC<Props> = (props) => {
     <div className={styles.backButton}><img className={styles.backButtonImg} src={backButton} alt="backButton" />Back to map</div>
     </Link>
 
-  <YouTube
-    videoId={videoId!}
-    opts={opts}
-    onPlay={onClick}
-    onPause={onPauseOrEnd}
-    onEnd={onPauseOrEnd}
-  />
+    <div className={styles.youtubeContainer}>
+      <YouTube videoId={videoId!} opts={opts} onPlay={onClick} onPause={onPauseOrEnd} onEnd={onPauseOrEnd} />
+    </div>
   <button className={styles.print} onClick={printQRCode}>Print</button>
   <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode}/>
 </div>

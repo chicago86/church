@@ -72,6 +72,21 @@
     }
 }
 
+.youtubeContainer {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+}
+
+.youtubeContainer iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+
 .backButtonImg {
     width: 100px;
     height: 100px;
