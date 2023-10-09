@@ -1,9 +1,9 @@
 import graphql from "babel-plugin-relay/macro"
 import { useMemo } from "react"
 import { useSubscription } from 'react-relay'
-
+ 
 export default function BaseViewerSubscription() {
-
+//modified at is time
   const subscription = graphql`
     subscription baseViewerSubscription {
       base_viewer_connection {
@@ -39,7 +39,7 @@ export default function BaseViewerSubscription() {
 
 
 
-      
+      // TODO use fragment conception istead
       // state.refetch({}, 'network-only')
     },
     onError: (error: Error) => console.log(`Subscription error occured:`, error)

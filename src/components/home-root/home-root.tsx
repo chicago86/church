@@ -23,6 +23,9 @@ const preloadableRequest = require("./__generated__/homeRootQuery.graphql")
 // TODO the fragment and the refetchable fragment repeat each other but the former has no @refetchable directive. 
 // Also the very same graphql code sits in the homeRootQuery because otherwise data cannot be passed to a sibling branch of react components.
 // Is there any way to write the graphql command text only once and then reuse?
+
+
+//TODO base_viewer_connection first 20 (where status_code: 1), order by, 
 graphql`
 query homeRootQuery {
   base_viewer_connection {

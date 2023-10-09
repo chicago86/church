@@ -47,7 +47,7 @@ const VideoPlayer: React.FC<Props> = (props) => {
     }
   }
 `);
-
+//TODO update mutation  (coput of mutation on 43th row). Will be called update_base_viewer_one
   const onClick = debounce(() => {
     if (!data) { console.log('Data undefined'); console.log('data', data); return }
     if (!clientData?.IPv4) { console.log('clientData undefined'); console.log('clientData', clientData); return }
@@ -59,8 +59,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
       geometry: {
         type: "Point" as "Point",
         coordinates: [
-          50.4649,
-          50.4649,
+          50.4649, //from ip resolver
+          50.4649, //ip resolver
         ],
       },
       properties: {
@@ -130,7 +130,6 @@ const VideoPlayer: React.FC<Props> = (props) => {
       autoplay: 0, 
     },
   };
-
 
   const clip_url = 'https://www.youtube.com/watch?v=a3ICNMQW7Ok';
   const videoId = new URL(clip_url).searchParams.get("v") ?? '';
