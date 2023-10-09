@@ -49,7 +49,7 @@ const VideoPlayer: React.FC<Props> = (props) => {
     }
   }
 `);
-//TODO update mutation  (coput of mutation on 43th row). Will be called update_base_viewer_one
+  //TODO update mutation  (coput of mutation on 43th row). Will be called update_base_viewer_one
   const onClick = debounce(() => {
     if (!data) { console.log('Data undefined'); console.log('data', data); return }
     if (!clientData?.IPv4) { console.log('clientData undefined'); console.log('clientData', clientData); return }
@@ -101,12 +101,12 @@ const VideoPlayer: React.FC<Props> = (props) => {
     const handleUnload = () => {
       onPauseOrEnd();
     };
-    
+
     window.addEventListener('beforeunload', handleUnload);
-    return () =>  window.removeEventListener('beforeunload', handleUnload);
+    return () => window.removeEventListener('beforeunload', handleUnload);
   }, []); // Empty dependency array ensures this effect runs once on mount and cleans up on unmount
-  
-  
+
+
 
   // console.log('The following values are available to use')
   // console.log('data', data)
@@ -116,7 +116,7 @@ const VideoPlayer: React.FC<Props> = (props) => {
   const printQRCode = () => {
     const svgElement = document.getElementById('qr-print'); // Get SVG element by id
     if (!svgElement) return;
-    
+
     const printWindow = window.open('', '_blank'); // Open a new window
     printWindow?.document.write('<html><head><title>Print QR Code</title></head><body>');
     printWindow?.document.write(svgElement.outerHTML); // Write the SVG element to the new window
@@ -129,25 +129,26 @@ const VideoPlayer: React.FC<Props> = (props) => {
     height: '0',
     width: '100%',
     playerVars: {
-      autoplay: 0, 
+      autoplay: 0,
     },
   };
 
   const clip_url = 'https://www.youtube.com/watch?v=a3ICNMQW7Ok';
   const videoId = new URL(clip_url).searchParams.get("v") ?? '';
-  
+
   return <div className={styles.videoPlayer}>
-
     <Link to='/'>
-    <div className={styles.backButton}><img className={styles.backButtonImg} src={backButton} alt="backButton" />Back to map</div>
+      <div className={styles.backButton}>
+        <img src={backButton} alt="backButton" />
+        <div className={styles.backButtonText}>Back to map</div>
+      </div>
     </Link>
-
     <div className={styles.youtubeContainer}>
       <YouTube videoId={videoId!} opts={opts} onPlay={onClick} onPause={onPauseOrEnd} onEnd={onPauseOrEnd} />
     </div>
-  <button className={styles.print} onClick={printQRCode}>Print</button>
-  <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode}/>
-</div>
+    <button className={styles.print} onClick={printQRCode}>Print</button>
+    <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode} />
+  </div>
 }
 
 export default VideoPlayer;
