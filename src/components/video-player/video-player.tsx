@@ -1,6 +1,7 @@
 import graphql from "babel-plugin-relay/macro";
 import { Feature } from "geojson";
 import React, { useEffect, useState } from 'react';
+import Link from "../../routing/link"
 import { PreloadedQuery, useMutation, usePreloadedQuery } from 'react-relay';
 import { v4 as uuidv4 } from "uuid";
 import { RouteData } from '../../types';
@@ -10,6 +11,7 @@ import { videoPlayerRootQuery } from "./__generated__/videoPlayerRootQuery.graph
 import { QRCodeSVG } from "qrcode.react";
 import YouTube from 'react-youtube';
 import debounce from 'lodash.debounce';
+import backButton from './images/back.png'
 
 const preloadableRequest = require("./__generated__/videoPlayerRootQuery.graphql")
 
@@ -124,8 +126,8 @@ const VideoPlayer: React.FC<Props> = (props) => {
   };
 
   const opts = {
-    height: '390',
-    width: '640',
+    height: '0',
+    width: '100%',
     playerVars: {
       autoplay: 0, 
     },
@@ -135,13 +137,14 @@ const VideoPlayer: React.FC<Props> = (props) => {
   const videoId = new URL(clip_url).searchParams.get("v") ?? '';
   
   return <div className={styles.videoPlayer}>
-  <YouTube
-    videoId={videoId!}
-    opts={opts}
-    onPlay={onClick}
-    onPause={onPauseOrEnd}
-    onEnd={onPauseOrEnd}
-  />
+
+    <Link to='/'>
+    <div className={styles.backButton}><img className={styles.backButtonImg} src={backButton} alt="backButton" />Back to map</div>
+    </Link>
+
+    <div className={styles.youtubeContainer}>
+      <YouTube videoId={videoId!} opts={opts} onPlay={onClick} onPause={onPauseOrEnd} onEnd={onPauseOrEnd} />
+    </div>
   <button className={styles.print} onClick={printQRCode}>Print</button>
   <QRCodeSVG id='qr-print' value={`${window.location.href}`} className={styles.qrCode}/>
 </div>
